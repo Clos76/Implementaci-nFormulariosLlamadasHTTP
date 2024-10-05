@@ -15,22 +15,25 @@ template: `
 
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()"><!--Crear Trigger al presionar submit-->
 
-
+<!--Crear seccion de forma para nombre, con requerimientos -->
     <label for="name">Nombre: </label>
     <input type="text" id="name" formControlName="name">
     <div *ngIf="myForm.controls.name.errors?.['required'] && myForm.controls.name.touched">Name is required.</div>
   <div *ngIf="myForm.controls.name.errors?.['minlength'] && myForm.controls.name.touched">Name must be at least 3 characters long</div>
 
+  <!--Crear seccion de forma para correo electronico, con requerimientos -->
   <label for="email">Correo electronico: </label>
     <input type="email" id="email" formControlName="email">
     <div *ngIf="myForm.controls.email.errors?.['required'] && myForm.controls.email.touched">Correo electronico requerido.</div>
   <div *ngIf="myForm.controls.email.errors?.['minlength'] && myForm.controls.email.touched">Su correo tiene que ser valido. </div>
 
+    <!--Crear seccion de forma para contraseña con requerimientos -->
   <label for="password">Contraseña </label>
     <input type="password" id="password" formControlName="password">
     <div *ngIf="myForm.controls.password.errors?.['required'] && myForm.controls.password.touched">Una contraseña es requerida.</div>
   <div *ngIf="myForm.controls.password.errors?.['minlength'] && myForm.controls.password.touched">Su contraseña tiene que ser almenos 3 caracters</div>
- <!--Disable the submit button if form is invalid-->
+
+ <!--Desabilitar el boton si no ha cumplido con requerimientos-->
   <button [disabled]="myForm.invalid">Submit</button>
 </form>
 
@@ -41,14 +44,17 @@ template: `
 })
 
 export class ReactiveFormComponent implements OnInit{
+
+    //variables para la forma con validores de texto
     myForm = new FormGroup({
         name: new FormControl('', [Validators.required, Validators.minLength(3)]) ,
         email: new FormControl('', [Validators.required, Validators.minLength(3)]),
         password: new FormControl('', [Validators.required, Validators.minLength(3)])
     });
 
-
+//crear data publico para usarlo para recibir los datos
     public data : any;
+
     //crear API para mandar la informacion del formulario
     private apiUrl = 'https://jsonplaceholder.typicode.com/todos'
 
@@ -57,11 +63,12 @@ export class ReactiveFormComponent implements OnInit{
         
     }
 
+
     ngOnInit(): void {
     
     }
 
-
+//utilizar fetch para realizar el Get al API
     public fetchDetails(){
         this.http.get(this.apiUrl).subscribe(
             (response:any)=> {
