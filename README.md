@@ -1,41 +1,41 @@
-# FormsTemplates
+# Form Templates
 
-Este proyecto fue generado por [Angular CLI](https://github.com/angular/angular-cli) version 18.2.5.
+Este proyecto fue generado por [Angular CLI](https://github.com/angular/angular-cli) versión 18.2.5.
 
-## Servidor de desarollo
+## Servidor de desarrollo
 
-Ingresar `ng serve` para un dev servidor. Navega al url indicado o a `http://localhost:4200/`. La aplicacion se cargara automaticamente si hay algun cambio. 
+Ingresar `ng serve` para un dev servidor. Navega al url indicado o a `http://localhost:4200/`. La aplicación se cargará automáticamente si hay algún cambio. 
 
 
 ## Compilando
 
-Ingresa `ng build` para crear el proyecto. Los artefactos del build seran guardados en el `dist/` directorio.
+Ingresa `ng build` para crear el proyecto. Los artefactos del build serán guardados en el `dist/` directorio.
 
 ## Running unit tests
 
-# Proyecto Angular de Implementacion de Formularios y Llamadas de HTTP. 
+# Proyecto Angular de Implementación de Formularios y Llamadas de HTTP. 
 
-## Descripcion General
-Este proyecto es una aplicacion Angular que demuestra el uso de formularios de tipo "Template Driven Forms" y de "Model Driven Forms". Se creo la llamada a un API llamado Json Place Holder para simular la llamada de un API el cual se encuentra en el archivo (httpCall.component.ts). En el archivo (modelDriven.component.ts) se implemento el uso de Model Driven Forms y tambien la ingresion de datos para el formulario en el cual se creo un POST al API. A este formulario, el usurio tiene que ingresar su nombre, correo electronico y una contraseña. Si el usuario solo da click a algunos de estos campos pero no ingresa los datos, se le da un mensaje de error diciendolo que el nombre, correo electronico y contraseña son requeridos y tambien tiene que tener un minimo de tres caracteres. Si el usuario ingresa los datos en los campos exitosamente, se le dara un mensaje de alerta que los datos fueron ingresados correctamente. Al hacer esto, podra verificar en la consola los datos ingresados. 
+## Descripción General
+Este proyecto es una aplicación Angular que demuestra el uso de formularios de tipo "Template Driven Forms" y de "Model Driven Forms". Se creó la llamada a un API llamado Json Place Holder para simular la llamada de un API el cual se encuentra en el archivo (httpCall.component.ts). En el archivo (modelDriven.component.ts) se implementó el uso de Model Driven Forms y también la inserción de datos para el formulario en el cual se creó un POST al API. En este formulario, el usuario tiene que ingresar su nombre, correo electrónico y una contraseña. Si el usuario solo da click a algunos de estos campos pero no ingresa los datos, se le da un mensaje de error diciendo que el nombre, correo electrónico y contraseña son requeridos y también tiene que tener un mínimo de tres caracteres. Si el usuario ingresa los datos en los campos exitosamente, se le dará un mensaje de alerta que los datos fueron ingresados correctamente. Al hacer esto, podrá verificar en la consola los datos ingresados. 
 
-## Caracteristicas
--**Formulario Reactivo (Model-Driven)**: Permite a los usuarios ingresar datos en un formulario el cual contienen validaciones integradas. 
-- El nombre, correo electronico y la contraseña son requeridos y tienen un min de 3 caracteres para que sean validos. 
-- Mientras no ingrese los datos correctos, el boton de Submit no sera activado. 
+## Características
+-**Formulario Reactivo (Model-Driven)**Permite a los usuarios ingresar datos en un formulario el cual contienen validaciones integradas. 
+- El nombre, correo electrónico y la contraseña son requeridos y tienen un mínimo de 3 caracteres para que sean válidos. 
+- Mientras no ingrese los datos correctos, el botón de Submit no será activado. 
 - Se crearon variables para los datos del formulario.
-- Se creo una variable privada para guardar el URL del API.
-- Se creo un constructor privado llamado http que implementa el la classe HttpClient
-- Para la manipulacion de los datos ingresados, se creo el metodo onSubmit() el cual contiene la alerta emita al usuario si los datos fueron ingresados correctement o si no.
-- Se implemento el uso de error por si los datos ingresados no fueron ingresados correctamente y se imprime el error.
+- Se creó una variable privada para guardar el URL del API.
+- Se creó un constructor privado llamado http que implementa el la clase HttpClient
+- Para la manipulación de los datos ingresados, se creó el método onSubmit() el cual contiene la alerta que emite al usuario si los datos fueron ingresados correctamente o si no.
+- Se implementó el uso de error por si los datos ingresados no fueron ingresados correctamente y se imprime el error.
 
-- **Formulario llamada HTTP**: Este archivo contiene el llamado a un API llamado Json Place Holder el cual simula la llamada de HTTP a ciertos datos por medio de GET. Aqui, podemos ver los datos del primer usuario, junto con su id y su titulo.
-- Se exporto la classe HTTPCreated que implementa OnInit el cual contiene los metodos para hacer la llamada.
-- Se creo un metodo publico de apiUrl el cual contienen la direccion de URL.
-- Se creo el constructor privado http que implementa el HttpClient.
-- En el metodo ngOnInit, se implementa el fetchDetails para obtener los resultados.
-- Se creo el metodo publico fetchDetails el cual implementa un GET al API con el url obtenido, se subscribio y se regresa la respuesta.
+- **Formulario llamada HTTP**Este archivo contiene el llamado a un API llamado Json Place Holder el cual simula la llamada de HTTP a ciertos datos por medio de GET. Aquí, podemos ver los datos del primer usuario, junto con su id y su título.
+- Se exportó la clase HTTPCreated que implementa OnInit el cual contiene los métodos para hacer la llamada.
+- Se creó un método público de apiUrl el cual contiene la dirección de URL.
+- Se creó el constructor privado http que implementa el HttpClient.
+- En el método ngOnInit, se implementa el fetchDetails para obtener los resultados.
+- Se creó el método público fetchDetails el cual implementa un GET al API con el url obtenido, se suscribe y se regresa la respuesta.
 
-## Codigo de ejemplo 
+## Código de ejemplo 
 
 ```TypeScript
 **modelDriven.component.ts **
@@ -49,31 +49,31 @@ template: `
 
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()"><!--Crear Trigger al presionar submit-->
 
-<!--Crear seccion de forma para nombre, con requerimientos -->
+<!--Crear sección de forma para nombre, con requerimientos -->
     <label for="name">Nombre: </label>
     <input type="text" id="name" formControlName="name">
     <div *ngIf="myForm.controls.name.errors?.['required'] && myForm.controls.name.touched">Name is required.</div>
   <div *ngIf="myForm.controls.name.errors?.['minlength'] && myForm.controls.name.touched">Name must be at least 3 characters long</div>
 
-  <!--Crear seccion de forma para correo electronico, con requerimientos -->
-  <label for="email">Correo electronico: </label>
+  <!--Crear sección de forma para correo electrónico, con requerimientos -->
+  <label for="email">Correo electrónico: </label>
     <input type="email" id="email" formControlName="email">
-    <div *ngIf="myForm.controls.email.errors?.['required'] && myForm.controls.email.touched">Correo electronico requerido.</div>
-  <div *ngIf="myForm.controls.email.errors?.['minlength'] && myForm.controls.email.touched">Su correo tiene que ser valido. </div>
+    <div *ngIf="myForm.controls.email.errors?.['required'] && myForm.controls.email.touched">Correo electrónico requerido.</div>
+  <div *ngIf="myForm.controls.email.errors?.['minlength'] && myForm.controls.email.touched">Su correo tiene que ser válido. </div>
 
-    <!--Crear seccion de forma para contraseña con requerimientos -->
+    <!--Crear sección de forma para contraseña con requerimientos -->
   <label for="password">Contraseña </label>
     <input type="password" id="password" formControlName="password">
     <div *ngIf="myForm.controls.password.errors?.['required'] && myForm.controls.password.touched">Una contraseña es requerida.</div>
-  <div *ngIf="myForm.controls.password.errors?.['minlength'] && myForm.controls.password.touched">Su contraseña tiene que ser almenos 3 caracters</div>
+  <div *ngIf="myForm.controls.password.errors?.['minlength'] && myForm.controls.password.touched">Su contraseña tiene que ser al menos 3 caracteres</div>
 
- <!--Desabilitar el boton si no ha cumplido con requerimientos-->
+ <!--Deshabilitar el botón si no ha cumplido con requerimientos-->
   <button [disabled]="myForm.invalid">Submit</button>
 </form>
 
 export class ReactiveFormComponent implements OnInit{
 
-    //variables para la forma con validores de texto
+    //variables para la forma con valores de texto
     myForm = new FormGroup({
         name: new FormControl('', [Validators.required, Validators.minLength(3)]) ,
         email: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -86,7 +86,7 @@ export class ReactiveFormComponent implements OnInit{
     //crear API para mandar la informacion del formulario
     private apiUrl = 'https://jsonplaceholder.typicode.com/todos'
 
-    //metodo privado para injectar httpClient
+    //método privado para injectar httpClient
     constructor(private http: HttpClient){
         
     }
@@ -105,11 +105,11 @@ export class ReactiveFormComponent implements OnInit{
         )
     }
 
-    //metodo para controlar la entrega de datos ingresados
+    //método para controlar la entrega de datos ingresados
     onSubmit(){
         if(this.myForm.valid){
             const formData = this.myForm.value;
-            this.sendData(formData).subscribe(
+            this.send Data(formData).subscribe(
                 (response:any) => {
                     alert('Datos ingresados correctamente.')
                     console.log('Datos ingresados correctamente', response)
@@ -121,14 +121,14 @@ export class ReactiveFormComponent implements OnInit{
             )
         }
     }
-    //metodo para enviar datos del formulario al API
+    //método para enviar datos del formulario al API
     sendData(data:any ) {
         return this.http.post(this.apiUrl, data);
     }
 }
 ```
 
-## Codigo de ejemplo 
+## Código de ejemplo 
 ** httpCall.component.ts**
 ```TypeScript
 import { HttpClient, HttpClientModule } from "@angular/common/http";
@@ -187,10 +187,11 @@ private apiUrl = 'https://jsonplaceholder.typicode.com/todos/1'
 #Estructura del Proyecto
 /src
   /app
-    /model.Driven.component.ts   #Conponente del formulario modelado implementando POST
-    /httpCall.component.ts       #Conponente para realizar llamadas HTTP
-    /app.component.ts            #Conponente principal de la aplicacion 
-  /styles.cs                     #Estilos globales de la aplicacion 
+    /model.Driven.component.ts   #Componente del formulario modelado implementando POST
+    /httpCall.component.ts       #Componente para realizar llamadas HTTP
+    /app.component.ts            #Componente principal de la aplicación 
+  /styles.css                     #Estilos globales de la aplicación 
+
 
 
 
